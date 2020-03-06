@@ -123,6 +123,70 @@ let upstream =
 
 let overrides = {=}
 
-let additions = {=}
+let additions = 
+  { halogen = 
+    { dependencies = 
+      [ 
+        "free"
+      , "ordered-collections"
+      , "console"
+      , "profunctor"
+      , "media-types"
+      , "profunctor-lenses"
+      , "fork"
+      , "halogen-vdom"
+      , "web-uievents"
+      , "coroutines"
+      , "aff"
+      , "unsafe-reference"
+      , "avar"
+      , "dom-indexed"
+      , "unsafe-coerce"
+      , "const"
+      , "freeap"
+      , "transformers"
+      , "parallel"
+      , "foreign"
+      , "nullable"
+      , "halogen-vdom" 
+      ]
+      
+    , repo = 
+        "https://github.com/purescript-halogen/purescript-halogen.git"
+    , version = 
+        "v5.0.0-rc.7"
+    }
+
+  , halogen-vdom = 
+      { dependencies = 
+          [ "effect"
+          , "maybe"
+          , "web-html"
+          , "foreign-object"
+          , "prelude"
+          , "bifunctors"
+          , "unsafe-coerce"
+          , "refs"
+          , "tuples"
+          , "foreign"
+          ]
+
+      , repo = 
+          "https://github.com/purescript-halogen/purescript-halogen-vdom.git"
+      , version =
+            "v6.1.2"
+      }
+
+  , bulma = 
+      { dependencies = 
+          [ "prelude"
+          , "generics-rep"
+          ]
+      , repo = 
+          "https://github.com/sectore/purescript-bulma.git"
+      , version = 
+          "v2.0.0"
+      }
+  }
 
 in  upstream // overrides // additions
