@@ -1,2 +1,6 @@
 output
+\.psci_modules
+\.purs-repl
+\.spago
+generated-docs
 
