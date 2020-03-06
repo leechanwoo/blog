@@ -42,7 +42,10 @@ renderHome _ = HH.div [ bulmaClass [ BCOL.column
                                    , BC.unsafeClassName "is-offset-2"
                                    ] 
                       ]
-                      [ HH.div [ bulmaClass [ BC.unsafeClassName "card", BC.unsafeClassName "article"] ]
+                      [ HH.div [ bulmaClass [ BC.unsafeClassName "card"
+                                            , BC.unsafeClassName "article"
+                                            ] 
+                               ]
                                [ HH.div [ bulmaClass [ BC.unsafeClassName "card-content" ] ]
                                         [ HH.div [ bulmaClass [ BC.unsafeClassName "media" ] ] 
                                                  [ HH.div [ bulmaClass [ BC.unsafeClassName "media-content" 
@@ -65,7 +68,6 @@ renderHome _ = HH.div [ bulmaClass [ BCOL.column
                                                                            , HH.text "This is test contents"
                                                                            , HE.br_
                                                                            , HH.text "This is test contents"
-                                                                           , HE.br_
                                                                            ]
                                                                    ]
 
@@ -107,7 +109,10 @@ renderHome _ = HH.div [ bulmaClass [ BCOL.column
                                                  ]
                                         ]
                                ]
-                      , HH.div [ bulmaClass [ BC.unsafeClassName "card", BC.unsafeClassName "article"] ]
+                      , HH.div [ bulmaClass [ BC.unsafeClassName "card"
+                                            , BC.unsafeClassName "article"
+                                            ] 
+                               ]
                                [ HH.div [ bulmaClass [ BC.unsafeClassName "card-content" ] ]
                                         [ HH.div [ bulmaClass [ BC.unsafeClassName "media" ] ] 
                                                  [ HH.div [ bulmaClass [ BC.unsafeClassName "media-content" 

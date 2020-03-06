@@ -23,8 +23,8 @@ import Bulma.Elements.Title as BT
 
 
 
---toHClassName :: BC.ClassName -> ClassName 
---toHClassName (BC.ClassName str) = ClassName str
+toHClassName :: BC.ClassName -> ClassName 
+toHClassName (BC.ClassName str) = ClassName str
 
 
 
