@@ -6,8 +6,21 @@ import Prelude
 import Data.Const (Const)
 import Halogen as H
 import Halogen.HTML as HH
+import Halogen.HTML.Properties as HP
+import Halogen.HTML.Elements as HE
+import Halogen.HTML.Core (ClassName(..))
+
+import Bulma.Common as BC
+import Bulma.Layout.Layout as BL
+import Bulma.Columns.Columns as BCOL
 
 type Slot = H.Slot (Const Void) Void
+
+
+bulmaClass :: forall r i. Array BC.ClassName -> HP.IProp (class :: String | r) i 
+bulmaClass = HP.class_ <<< ClassName  <<< BC.runClassNames
+
+
 
 home :: forall m. H.Component HH.HTML (Const Void) Unit Void m
 home =
@@ -17,10 +30,72 @@ home =
                   }
 
 
+--renderHome :: forall m. Unit -> H.ComponentHTML Void () m
+--renderHome _ = HH.ul_ [ HH.li_ [ HH.text "Adrianne" ] 
+--                       , HH.li_ [ HH.text "Carolus" ]
+--                       ]
+
+
 renderHome :: forall m. Unit -> H.ComponentHTML Void () m
-renderHome _ = HH.ul_ [ HH.li_ [ HH.text "Adrianne" ] 
-                       , HH.li_ [ HH.text "Carolus" ]
-                       ]
+renderHome _ = HH.div [ bulmaClass [ BCOL.column
+                                   , BC.unsafeClassName "is-8" 
+                                   , BC.unsafeClassName "is-offset-2"
+                                   ] 
+                      ]
+                      [ HH.div [ bulmaClass [ BC.unsafeClassName "card article" ] ]
+                               [ HH.div [ bulmaClass [ BC.unsafeClassName "card-content" ] ]
+                                        [ HH.div [ bulmaClass [ BC.unsafeClassName "media" ] ] 
+                                                 [ HH.div [ bulmaClass [ BC.unsafeClassName "media-content" 
+                                                                       , BC.unsafeClassName "has-text-centered"
+                                                                       ] 
+                                                          ] 
+                                                          [ HH.p [ bulmaClass [ BC.unsafeClassName "title"
+                                                                              , BC.unsafeClassName "article-title"] 
+                                                                 ]
+                                                                 [ HH.text "Test Post1" ]
+
+                                                          ]
+                                                 ]
+                                        ]
+                               ]
+
+                      , HH.div [ bulmaClass [ BC.unsafeClassName "card article"] ]
+                               [ HH.div [ bulmaClass [ BC.unsafeClassName "card-content" ] ]
+                                        [ HH.div [ bulmaClass [ BC.unsafeClassName "media" ] ]
+                                                 [ HH.div [ bulmaClass [ BC.unsafeClassName "media-content" 
+                                                                       , BC.unsafeClassName "has-text-centered"
+                                                                       ] 
+                                                          ] 
+                                                          [ HH.p [ bulmaClass [ BC.unsafeClassName "title"
+                                                                              , BC.unsafeClassName "article-title"] 
+                                                                 ]
+                                                                 [ HH.text "Test Post2" ]
+
+                                                          ]
+                                                 ]
+                                        ]
+                               ]
+
+                      , HH.div [ bulmaClass [ BC.unsafeClassName "card article"] ]
+                               [ HH.div [ bulmaClass [ BC.unsafeClassName "card-content" ] ]
+                                        [ HH.div [ bulmaClass [ BC.unsafeClassName "media" ] ]
+                                                 [ HH.div [ bulmaClass [ BC.unsafeClassName "media-content" 
+                                                                       , BC.unsafeClassName "has-text-centered"
+                                                                       ] 
+                                                          ] 
+                                                          [ HH.p [ bulmaClass [ BC.unsafeClassName "title"
+                                                                              , BC.unsafeClassName "article-title"] 
+                                                                 ]
+                                                                 [ HH.text "Test Post3" ]
+
+                                                          ]
+                                                 ]
+                                        ]
+                               ]
+                      ]
+
+
+
 
 
 posts :: forall m. H.Component HH.HTML (Const Void) Unit Void m
