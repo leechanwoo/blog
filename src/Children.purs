@@ -42,7 +42,7 @@ renderHome _ = HH.div [ bulmaClass [ BCOL.column
                                    , BC.unsafeClassName "is-offset-2"
                                    ] 
                       ]
-                      [ HH.div [ bulmaClass [ BC.unsafeClassName "card article" ] ]
+                      [ HH.div [ bulmaClass [ BC.unsafeClassName "card", BC.unsafeClassName "article"] ]
                                [ HH.div [ bulmaClass [ BC.unsafeClassName "card-content" ] ]
                                         [ HH.div [ bulmaClass [ BC.unsafeClassName "media" ] ] 
                                                  [ HH.div [ bulmaClass [ BC.unsafeClassName "media-content" 
@@ -54,14 +54,31 @@ renderHome _ = HH.div [ bulmaClass [ BCOL.column
                                                                  ]
                                                                  [ HH.text "Test Post1" ]
 
+                                                          , HH.div [ bulmaClass [ BC.unsafeClassName "content"
+                                                                                , BC.unsafeClassName "article-body"
+                                                                                ] 
+                                                                   ]
+                                                                   [ HH.p_ [ HH.text "This is test contents" 
+                                                                           , HE.br_
+                                                                           , HH.text "This is test contents"
+                                                                           , HE.br_
+                                                                           , HH.text "This is test contents"
+                                                                           , HE.br_
+                                                                           , HH.text "This is test contents"
+                                                                           , HE.br_
+                                                                           ]
+                                                                   ]
+
                                                           ]
                                                  ]
                                         ]
                                ]
-
-                      , HH.div [ bulmaClass [ BC.unsafeClassName "card article"] ]
+                      , HH.div [ bulmaClass [ BC.unsafeClassName "card"
+                                            , BC.unsafeClassName "article"
+                                            ] 
+                               ]
                                [ HH.div [ bulmaClass [ BC.unsafeClassName "card-content" ] ]
-                                        [ HH.div [ bulmaClass [ BC.unsafeClassName "media" ] ]
+                                        [ HH.div [ bulmaClass [ BC.unsafeClassName "media" ] ] 
                                                  [ HH.div [ bulmaClass [ BC.unsafeClassName "media-content" 
                                                                        , BC.unsafeClassName "has-text-centered"
                                                                        ] 
@@ -69,16 +86,30 @@ renderHome _ = HH.div [ bulmaClass [ BCOL.column
                                                           [ HH.p [ bulmaClass [ BC.unsafeClassName "title"
                                                                               , BC.unsafeClassName "article-title"] 
                                                                  ]
-                                                                 [ HH.text "Test Post2" ]
+                                                                 [ HH.text "Test Post1" ]
+
+                                                          , HH.div [ bulmaClass [ BC.unsafeClassName "content"
+                                                                                , BC.unsafeClassName "article-body"
+                                                                                ] 
+                                                                   ]
+                                                                   [ HH.p_ [ HH.text "This is test contents" 
+                                                                           , HE.br_
+                                                                           , HH.text "This is test contents"
+                                                                           , HE.br_
+                                                                           , HH.text "This is test contents"
+                                                                           , HE.br_
+                                                                           , HH.text "This is test contents"
+                                                                           , HE.br_
+                                                                           ]
+                                                                   ]
 
                                                           ]
                                                  ]
                                         ]
                                ]
-
-                      , HH.div [ bulmaClass [ BC.unsafeClassName "card article"] ]
+                      , HH.div [ bulmaClass [ BC.unsafeClassName "card", BC.unsafeClassName "article"] ]
                                [ HH.div [ bulmaClass [ BC.unsafeClassName "card-content" ] ]
-                                        [ HH.div [ bulmaClass [ BC.unsafeClassName "media" ] ]
+                                        [ HH.div [ bulmaClass [ BC.unsafeClassName "media" ] ] 
                                                  [ HH.div [ bulmaClass [ BC.unsafeClassName "media-content" 
                                                                        , BC.unsafeClassName "has-text-centered"
                                                                        ] 
@@ -86,13 +117,29 @@ renderHome _ = HH.div [ bulmaClass [ BCOL.column
                                                           [ HH.p [ bulmaClass [ BC.unsafeClassName "title"
                                                                               , BC.unsafeClassName "article-title"] 
                                                                  ]
-                                                                 [ HH.text "Test Post3" ]
+                                                                 [ HH.text "Test Post1" ]
+
+                                                          , HH.div [ bulmaClass [ BC.unsafeClassName "content"
+                                                                                , BC.unsafeClassName "article-body"
+                                                                                ] 
+                                                                   ]
+                                                                   [ HH.p_ [ HH.text "This is test contents" 
+                                                                           , HE.br_
+                                                                           , HH.text "This is test contents"
+                                                                           , HE.br_
+                                                                           , HH.text "This is test contents"
+                                                                           , HE.br_
+                                                                           , HH.text "This is test contents"
+                                                                           , HE.br_
+                                                                           ]
+                                                                   ]
 
                                                           ]
                                                  ]
                                         ]
                                ]
                       ]
+
 
 
 

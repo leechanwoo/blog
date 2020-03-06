@@ -19,12 +19,12 @@ import Bulma.Common as BC
 import Bulma.Layout.Layout as BL
 import Bulma.Components.Navbar as BN
 import Bulma.Elements.Title as BT
-import Bulma.Modifiers.Typography as BTG
 
 
 
-toHClassName :: BC.ClassName -> ClassName 
-toHClassName (BC.ClassName str) = ClassName str
+
+--toHClassName :: BC.ClassName -> ClassName 
+--toHClassName (BC.ClassName str) = ClassName str
 
 
 
@@ -54,8 +54,6 @@ type State = { currentRoute :: R.Route  }
 data Query a = ChangeRoute R.Route a
 
 type Input = R.Route
-
-
 
 
 
