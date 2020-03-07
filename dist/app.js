@@ -8782,7 +8782,7 @@ var PS = {};
   var Parent = $PS["Parent"];
   var Router = $PS["Router"];                
   var main = Halogen_Aff_Util.runHalogenAff(Control_Bind.bind(Effect_Aff.bindAff)(Halogen_Aff_Util.awaitBody)(function (body) {
-      return Control_Bind.bind(Effect_Aff.bindAff)(Effect_Class.liftEffect(Effect_Aff.monadEffectAff)(Data_Functor.map(Effect.functorEffect)(Data_Maybe.fromMaybe(Router.Home.value))(Router.getRoute)))(function (current) {
+      return Control_Bind.bind(Effect_Aff.bindAff)(Effect_Class.liftEffect(Effect_Aff.monadEffectAff)(Data_Functor.map(Effect.functorEffect)(Data_Maybe.fromMaybe(Router.Posts.value))(Router.getRoute)))(function (current) {
           return Control_Bind.bind(Effect_Aff.bindAff)(Halogen_VDom_Driver.runUI(Parent.page)(current)(body))(function (io) {
               var changeRoute = function (route) {
                   return Effect_Aff.launchAff_(io.query(Halogen_Query.tell(Parent.ChangeRoute.create(route))));

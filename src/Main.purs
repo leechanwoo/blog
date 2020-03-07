@@ -16,7 +16,7 @@ import Router as R
 main :: Effect Unit
 main = HA.runHalogenAff do
     body <- HA.awaitBody
-    current <- H.liftEffect $ Maybe.fromMaybe R.Home <$> R.getRoute
+    current <- H.liftEffect $ Maybe.fromMaybe R.Posts <$> R.getRoute
     io <- runUI Parent.page current body 
 
     let 
