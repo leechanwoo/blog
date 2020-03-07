@@ -8,10 +8,9 @@ import Halogen as H
 import Halogen.HTML as HH
 import Halogen.HTML.Properties as HP
 import Halogen.HTML.Elements as HE
-import Halogen.HTML.Core (ClassName(..))
+import Halogen.HTML.Core (ClassName(..), HTML)
 
 import Bulma.Common as BC
-import Bulma.Layout.Layout as BL
 import Bulma.Columns.Columns as BCOL
 
 type Slot = H.Slot (Const Void) Void
@@ -30,120 +29,112 @@ home =
                   }
 
 
---renderHome :: forall m. Unit -> H.ComponentHTML Void () m
---renderHome _ = HH.ul_ [ HH.li_ [ HH.text "Adrianne" ] 
---                       , HH.li_ [ HH.text "Carolus" ]
---                       ]
+newtype Content p i = Content 
+    { title :: String
+    , content :: Array (HTML p i)
+    , date :: String
+    , tag :: String
+    }
 
 
-renderHome :: forall m. Unit -> H.ComponentHTML Void () m
-renderHome _ = HH.div [ bulmaClass [ BCOL.column
+testPost1 :: forall p i. Content p i
+testPost1  = Content { title: title, date: date, tag: tag, content: content }
+    where title = "This is title of test post1"
+          date = "March 7, 2020"
+          tag = "purescript" 
+          content =
+              [ HH.p_ [ HH.text "This is test contents" 
+                    , HE.br_
+                    , HH.text "This is test contents"
+                    , HE.br_
+                    , HH.text "This is test contents"
+                    , HE.br_
+                    , HH.text "This is test contents"
+                    ]
+                  ]
+
+
+testPost2 :: forall p i. Content p i
+testPost2  = Content { title: title, date: date, tag: tag, content: content }
+    where title = "This is title of test post1"
+          date = "March 7, 2020"
+          tag = "functional_programming" 
+          content =
+              [ HH.p_ [ HH.text "This is test contents" 
+                    , HE.br_
+                    , HH.text "This is test contents"
+                    , HE.br_
+                    , HH.text "This is test contents"
+                    , HE.br_
+                    , HH.text "This is test contents"
+                    ]
+                  ]
+
+
+
+
+
+
+renderCard :: forall p i. Content p i -> HTML p i
+renderCard (Content { title: title  
+                    , content: content    
+                    , date: date
+                    , tag: tag
+                    }) = 
+            HH.div [ bulmaClass [ BC.unsafeClassName "card"
+                                , BC.unsafeClassName "article"
+                                ] 
+                   ]
+                   [ HH.div [ bulmaClass [ BC.unsafeClassName "card-content" ] ]
+                            [ HH.div [ bulmaClass [ BC.unsafeClassName "media" ] ] 
+                                     [ HH.div [ bulmaClass [ BC.unsafeClassName "media-content" 
+                                                           , BC.unsafeClassName "has-text-centered"
+                                                           ] 
+                                              ] 
+                                              [ HH.p [ bulmaClass [ BC.unsafeClassName "title"
+                                                                  , BC.unsafeClassName "article-title"] 
+                                                     ]
+                                                     [ HH.text title ]
+
+                                              , HH.div [ bulmaClass [ BC.unsafeClassName "tags"
+                                                                    , BC.unsafeClassName "has-addons"
+                                                                    , BC.unsafeClassName "level-item" 
+                                                                    ] 
+                                                       ]
+                                                       [ HH.span [ bulmaClass [ BC.unsafeClassName "tag"
+                                                                              , BC.unsafeClassName "is-rounded"
+                                                                              , BC.unsafeClassName "is-info"
+                                                                              ]
+                                                                 ] 
+                                                                 [ HH.text tag ]
+
+                                                       , HH.span [ bulmaClass [ BC.unsafeClassName "tag"
+                                                                              , BC.unsafeClassName "is-rounded"
+                                                                              ]
+                                                                 ] 
+                                                                 [ HH.text date ]
+
+                                                       ]
+
+                                              , HH.div [ bulmaClass [ BC.unsafeClassName "content"
+                                                                    , BC.unsafeClassName "article-body"
+                                                                    ] 
+                                                       ] content
+                                              ]
+                                     ]
+                            ]
+                   ]
+
+
+
+
+
+renderPosts :: forall m. Unit -> H.ComponentHTML Void () m
+renderPosts _ = HH.div [ bulmaClass [ BCOL.column
                                    , BC.unsafeClassName "is-8" 
                                    , BC.unsafeClassName "is-offset-2"
                                    ] 
-                      ]
-                      [ HH.div [ bulmaClass [ BC.unsafeClassName "card"
-                                            , BC.unsafeClassName "article"
-                                            ] 
-                               ]
-                               [ HH.div [ bulmaClass [ BC.unsafeClassName "card-content" ] ]
-                                        [ HH.div [ bulmaClass [ BC.unsafeClassName "media" ] ] 
-                                                 [ HH.div [ bulmaClass [ BC.unsafeClassName "media-content" 
-                                                                       , BC.unsafeClassName "has-text-centered"
-                                                                       ] 
-                                                          ] 
-                                                          [ HH.p [ bulmaClass [ BC.unsafeClassName "title"
-                                                                              , BC.unsafeClassName "article-title"] 
-                                                                 ]
-                                                                 [ HH.text "Test Post1" ]
-
-                                                          , HH.div [ bulmaClass [ BC.unsafeClassName "content"
-                                                                                , BC.unsafeClassName "article-body"
-                                                                                ] 
-                                                                   ]
-                                                                   [ HH.p_ [ HH.text "This is test contents" 
-                                                                           , HE.br_
-                                                                           , HH.text "This is test contents"
-                                                                           , HE.br_
-                                                                           , HH.text "This is test contents"
-                                                                           , HE.br_
-                                                                           , HH.text "This is test contents"
-                                                                           ]
-                                                                   ]
-
-                                                          ]
-                                                 ]
-                                        ]
-                               ]
-                      , HH.div [ bulmaClass [ BC.unsafeClassName "card"
-                                            , BC.unsafeClassName "article"
-                                            ] 
-                               ]
-                               [ HH.div [ bulmaClass [ BC.unsafeClassName "card-content" ] ]
-                                        [ HH.div [ bulmaClass [ BC.unsafeClassName "media" ] ] 
-                                                 [ HH.div [ bulmaClass [ BC.unsafeClassName "media-content" 
-                                                                       , BC.unsafeClassName "has-text-centered"
-                                                                       ] 
-                                                          ] 
-                                                          [ HH.p [ bulmaClass [ BC.unsafeClassName "title"
-                                                                              , BC.unsafeClassName "article-title"] 
-                                                                 ]
-                                                                 [ HH.text "Test Post1" ]
-
-                                                          , HH.div [ bulmaClass [ BC.unsafeClassName "content"
-                                                                                , BC.unsafeClassName "article-body"
-                                                                                ] 
-                                                                   ]
-                                                                   [ HH.p_ [ HH.text "This is test contents" 
-                                                                           , HE.br_
-                                                                           , HH.text "This is test contents"
-                                                                           , HE.br_
-                                                                           , HH.text "This is test contents"
-                                                                           , HE.br_
-                                                                           , HH.text "This is test contents"
-                                                                           , HE.br_
-                                                                           ]
-                                                                   ]
-
-                                                          ]
-                                                 ]
-                                        ]
-                               ]
-                      , HH.div [ bulmaClass [ BC.unsafeClassName "card"
-                                            , BC.unsafeClassName "article"
-                                            ] 
-                               ]
-                               [ HH.div [ bulmaClass [ BC.unsafeClassName "card-content" ] ]
-                                        [ HH.div [ bulmaClass [ BC.unsafeClassName "media" ] ] 
-                                                 [ HH.div [ bulmaClass [ BC.unsafeClassName "media-content" 
-                                                                       , BC.unsafeClassName "has-text-centered"
-                                                                       ] 
-                                                          ] 
-                                                          [ HH.p [ bulmaClass [ BC.unsafeClassName "title"
-                                                                              , BC.unsafeClassName "article-title"] 
-                                                                 ]
-                                                                 [ HH.text "Test Post1" ]
-
-                                                          , HH.div [ bulmaClass [ BC.unsafeClassName "content"
-                                                                                , BC.unsafeClassName "article-body"
-                                                                                ] 
-                                                                   ]
-                                                                   [ HH.p_ [ HH.text "This is test contents" 
-                                                                           , HE.br_
-                                                                           , HH.text "This is test contents"
-                                                                           , HE.br_
-                                                                           , HH.text "This is test contents"
-                                                                           , HE.br_
-                                                                           , HH.text "This is test contents"
-                                                                           , HE.br_
-                                                                           ]
-                                                                   ]
-
-                                                          ]
-                                                 ]
-                                        ]
-                               ]
-                      ]
+                      ] $ map renderCard [ testPost1, testPost2 ]
 
 
 
@@ -159,8 +150,8 @@ posts =
 
 
 
-renderPosts :: forall m. Unit -> H.ComponentHTML Void () m
-renderPosts _ = HH.ul_ [ HH.li_ [ HH.text "Maris Piper" ] 
+renderHome :: forall m. Unit -> H.ComponentHTML Void () m
+renderHome _ = HH.ul_ [ HH.li_ [ HH.text "Maris Piper" ] 
                        , HH.li_ [ HH.text "Spanish Agria" ]
                        , HH.li_ [ HH.text "Cara" ]
                        ]

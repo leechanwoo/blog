@@ -3743,6 +3743,7 @@ var PS = {};
   var p = element("p");
   var p_ = p([  ]);          
   var section = element("section");
+  var span = element("span");
   var ul = element("ul");
   var ul_ = ul([  ]);
   var div = element("div");
@@ -3762,6 +3763,7 @@ var PS = {};
   exports["p"] = p;
   exports["p_"] = p_;
   exports["section"] = section;
+  exports["span"] = span;
   exports["ul_"] = ul_;
 })(PS);
 (function($PS) {
@@ -3793,15 +3795,34 @@ var PS = {};
   var Bulma_Columns_Columns = $PS["Bulma.Columns.Columns"];
   var Bulma_Common = $PS["Bulma.Common"];
   var Data_Function = $PS["Data.Function"];
+  var Data_Functor = $PS["Data.Functor"];
   var Data_Unit = $PS["Data.Unit"];
   var Halogen_Component = $PS["Halogen.Component"];
   var Halogen_HTML_Core = $PS["Halogen.HTML.Core"];
   var Halogen_HTML_Elements = $PS["Halogen.HTML.Elements"];
-  var Halogen_HTML_Properties = $PS["Halogen.HTML.Properties"];                
+  var Halogen_HTML_Properties = $PS["Halogen.HTML.Properties"];
+  var testPost2 = (function () {
+      var content = [ Halogen_HTML_Elements.p_([ Halogen_HTML_Core.text("This is test contents"), Halogen_HTML_Elements.br_, Halogen_HTML_Core.text("This is test contents"), Halogen_HTML_Elements.br_, Halogen_HTML_Core.text("This is test contents"), Halogen_HTML_Elements.br_, Halogen_HTML_Core.text("This is test contents") ]) ];
+      return {
+          title: "This is title of test post1",
+          date: "March 7, 2020",
+          tag: "functional_programming",
+          content: content
+      };
+  })();
+  var testPost1 = (function () {
+      var content = [ Halogen_HTML_Elements.p_([ Halogen_HTML_Core.text("This is test contents"), Halogen_HTML_Elements.br_, Halogen_HTML_Core.text("This is test contents"), Halogen_HTML_Elements.br_, Halogen_HTML_Core.text("This is test contents"), Halogen_HTML_Elements.br_, Halogen_HTML_Core.text("This is test contents") ]) ];
+      return {
+          title: "This is title of test post1",
+          date: "March 7, 2020",
+          tag: "purescript",
+          content: content
+      };
+  })();
   var renderProfile = function (v) {
       return Halogen_HTML_Elements.ul_([ Halogen_HTML_Elements.li_([ Halogen_HTML_Core.text("Athlete") ]), Halogen_HTML_Elements.li_([ Halogen_HTML_Core.text("Pink Fir") ]) ]);
   };
-  var renderPosts = function (v) {
+  var renderHome = function (v) {
       return Halogen_HTML_Elements.ul_([ Halogen_HTML_Elements.li_([ Halogen_HTML_Core.text("Maris Piper") ]), Halogen_HTML_Elements.li_([ Halogen_HTML_Core.text("Spanish Agria") ]), Halogen_HTML_Elements.li_([ Halogen_HTML_Core.text("Cara") ]) ]);
   };
   var profile = Halogen_Component.mkComponent({
@@ -3809,20 +3830,23 @@ var PS = {};
       render: renderProfile,
       "eval": Halogen_Component.mkEval(Halogen_Component.defaultEval)
   });
-  var posts = Halogen_Component.mkComponent({
-      initialState: Data_Function["const"](Data_Unit.unit),
-      render: renderPosts,
-      "eval": Halogen_Component.mkEval(Halogen_Component.defaultEval)
-  });
-  var bulmaClass = function ($3) {
-      return Halogen_HTML_Properties.class_(Halogen_HTML_Core.ClassName(Bulma_Common.runClassNames($3)));
-  };
-  var renderHome = function (v) {
-      return Halogen_HTML_Elements.div([ bulmaClass([ Bulma_Columns_Columns.column, Bulma_Common.unsafeClassName("is-8"), Bulma_Common.unsafeClassName("is-offset-2") ]) ])([ Halogen_HTML_Elements.div([ bulmaClass([ Bulma_Common.unsafeClassName("card"), Bulma_Common.unsafeClassName("article") ]) ])([ Halogen_HTML_Elements.div([ bulmaClass([ Bulma_Common.unsafeClassName("card-content") ]) ])([ Halogen_HTML_Elements.div([ bulmaClass([ Bulma_Common.unsafeClassName("media") ]) ])([ Halogen_HTML_Elements.div([ bulmaClass([ Bulma_Common.unsafeClassName("media-content"), Bulma_Common.unsafeClassName("has-text-centered") ]) ])([ Halogen_HTML_Elements.p([ bulmaClass([ Bulma_Common.unsafeClassName("title"), Bulma_Common.unsafeClassName("article-title") ]) ])([ Halogen_HTML_Core.text("Test Post1") ]), Halogen_HTML_Elements.div([ bulmaClass([ Bulma_Common.unsafeClassName("content"), Bulma_Common.unsafeClassName("article-body") ]) ])([ Halogen_HTML_Elements.p_([ Halogen_HTML_Core.text("This is test contents"), Halogen_HTML_Elements.br_, Halogen_HTML_Core.text("This is test contents"), Halogen_HTML_Elements.br_, Halogen_HTML_Core.text("This is test contents"), Halogen_HTML_Elements.br_, Halogen_HTML_Core.text("This is test contents") ]) ]) ]) ]) ]) ]), Halogen_HTML_Elements.div([ bulmaClass([ Bulma_Common.unsafeClassName("card"), Bulma_Common.unsafeClassName("article") ]) ])([ Halogen_HTML_Elements.div([ bulmaClass([ Bulma_Common.unsafeClassName("card-content") ]) ])([ Halogen_HTML_Elements.div([ bulmaClass([ Bulma_Common.unsafeClassName("media") ]) ])([ Halogen_HTML_Elements.div([ bulmaClass([ Bulma_Common.unsafeClassName("media-content"), Bulma_Common.unsafeClassName("has-text-centered") ]) ])([ Halogen_HTML_Elements.p([ bulmaClass([ Bulma_Common.unsafeClassName("title"), Bulma_Common.unsafeClassName("article-title") ]) ])([ Halogen_HTML_Core.text("Test Post1") ]), Halogen_HTML_Elements.div([ bulmaClass([ Bulma_Common.unsafeClassName("content"), Bulma_Common.unsafeClassName("article-body") ]) ])([ Halogen_HTML_Elements.p_([ Halogen_HTML_Core.text("This is test contents"), Halogen_HTML_Elements.br_, Halogen_HTML_Core.text("This is test contents"), Halogen_HTML_Elements.br_, Halogen_HTML_Core.text("This is test contents"), Halogen_HTML_Elements.br_, Halogen_HTML_Core.text("This is test contents"), Halogen_HTML_Elements.br_ ]) ]) ]) ]) ]) ]), Halogen_HTML_Elements.div([ bulmaClass([ Bulma_Common.unsafeClassName("card"), Bulma_Common.unsafeClassName("article") ]) ])([ Halogen_HTML_Elements.div([ bulmaClass([ Bulma_Common.unsafeClassName("card-content") ]) ])([ Halogen_HTML_Elements.div([ bulmaClass([ Bulma_Common.unsafeClassName("media") ]) ])([ Halogen_HTML_Elements.div([ bulmaClass([ Bulma_Common.unsafeClassName("media-content"), Bulma_Common.unsafeClassName("has-text-centered") ]) ])([ Halogen_HTML_Elements.p([ bulmaClass([ Bulma_Common.unsafeClassName("title"), Bulma_Common.unsafeClassName("article-title") ]) ])([ Halogen_HTML_Core.text("Test Post1") ]), Halogen_HTML_Elements.div([ bulmaClass([ Bulma_Common.unsafeClassName("content"), Bulma_Common.unsafeClassName("article-body") ]) ])([ Halogen_HTML_Elements.p_([ Halogen_HTML_Core.text("This is test contents"), Halogen_HTML_Elements.br_, Halogen_HTML_Core.text("This is test contents"), Halogen_HTML_Elements.br_, Halogen_HTML_Core.text("This is test contents"), Halogen_HTML_Elements.br_, Halogen_HTML_Core.text("This is test contents"), Halogen_HTML_Elements.br_ ]) ]) ]) ]) ]) ]) ]);
-  };
   var home = Halogen_Component.mkComponent({
       initialState: Data_Function["const"](Data_Unit.unit),
       render: renderHome,
+      "eval": Halogen_Component.mkEval(Halogen_Component.defaultEval)
+  });
+  var bulmaClass = function ($9) {
+      return Halogen_HTML_Properties.class_(Halogen_HTML_Core.ClassName(Bulma_Common.runClassNames($9)));
+  };
+  var renderCard = function (v) {
+      return Halogen_HTML_Elements.div([ bulmaClass([ Bulma_Common.unsafeClassName("card"), Bulma_Common.unsafeClassName("article") ]) ])([ Halogen_HTML_Elements.div([ bulmaClass([ Bulma_Common.unsafeClassName("card-content") ]) ])([ Halogen_HTML_Elements.div([ bulmaClass([ Bulma_Common.unsafeClassName("media") ]) ])([ Halogen_HTML_Elements.div([ bulmaClass([ Bulma_Common.unsafeClassName("media-content"), Bulma_Common.unsafeClassName("has-text-centered") ]) ])([ Halogen_HTML_Elements.p([ bulmaClass([ Bulma_Common.unsafeClassName("title"), Bulma_Common.unsafeClassName("article-title") ]) ])([ Halogen_HTML_Core.text(v.title) ]), Halogen_HTML_Elements.div([ bulmaClass([ Bulma_Common.unsafeClassName("tags"), Bulma_Common.unsafeClassName("has-addons"), Bulma_Common.unsafeClassName("level-item") ]) ])([ Halogen_HTML_Elements.span([ bulmaClass([ Bulma_Common.unsafeClassName("tag"), Bulma_Common.unsafeClassName("is-rounded"), Bulma_Common.unsafeClassName("is-info") ]) ])([ Halogen_HTML_Core.text(v.tag) ]), Halogen_HTML_Elements.span([ bulmaClass([ Bulma_Common.unsafeClassName("tag"), Bulma_Common.unsafeClassName("is-rounded") ]) ])([ Halogen_HTML_Core.text(v.date) ]) ]), Halogen_HTML_Elements.div([ bulmaClass([ Bulma_Common.unsafeClassName("content"), Bulma_Common.unsafeClassName("article-body") ]) ])(v.content) ]) ]) ]) ]);
+  };
+  var renderPosts = function (v) {
+      return Halogen_HTML_Elements.div([ bulmaClass([ Bulma_Columns_Columns.column, Bulma_Common.unsafeClassName("is-8"), Bulma_Common.unsafeClassName("is-offset-2") ]) ])(Data_Functor.map(Data_Functor.functorArray)(renderCard)([ testPost1, testPost2 ]));
+  };
+  var posts = Halogen_Component.mkComponent({
+      initialState: Data_Function["const"](Data_Unit.unit),
+      render: renderPosts,
       "eval": Halogen_Component.mkEval(Halogen_Component.defaultEval)
   });
   exports["home"] = home;
