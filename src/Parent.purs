@@ -78,20 +78,40 @@ handleQuery (ChangeRoute route k) = do
 renderMenu :: forall m. H.ComponentHTML Void ChildSlots m
 renderMenu = HH.nav [ HP.class_ $ toHClassName BN.navbar] 
                     [ HH.div [ HP.class_ $ toHClassName BL.container ] 
-                             [ HH.div [ HP.class_ $ toHClassName BN.navbarMenu ] 
+                             [ HH.div [ bulmaClass [ BC.unsafeClassName "navbar-brand"] ]
+                                      [ HE.span [ bulmaClass [ BC.unsafeClassName "navbar-burger" 
+                                                             , BC.unsafeClassName "burger" 
+                                                             --, BC.unsafeClassName "is-active"
+                                                             ] 
+                                                , HP.attr (HH.AttrName "data-target") "navbarMenu"
+                                                ]
+                                                [ HE.span_ []
+                                                , HE.span_ []
+                                                , HE.span_ []
+                                                ]
+                                      ]
+                             , HH.div [ HP.id_ "navbarMenu"
+                                      , bulmaClass [ BN.navbarMenu
+                                                   --, BC.unsafeClassName "is-active" 
+                                                   ]
+                                      ]
+
                                       [ HH.div [ HP.class_ $ toHClassName BN.navbarEnd ]
-                                               [ HH.a [ HP.class_ $ toHClassName BN.navbarItem
+                                               [ HH.a [ bulmaClass [ BN.navbarItem
+                                                                   --, BC.unsafeClassName "is-active"
+                                                                   ]
                                                       , HP.href "#home" 
                                                       ] 
                                                       [ HH.text "Home"  ]
-                                               , HH.a [ HP.class_ $ toHClassName BN.navbarItem
+                                               , HH.a [ bulmaClass [ BN.navbarItem ]
                                                       , HP.href "#posts" 
                                                       ]
                                                       [ HH.text "Posts"  ]
-                                               , HH.a [ HP.class_ $ toHClassName BN.navbarItem 
+                                               , HH.a [ bulmaClass [ BN.navbarItem ] 
                                                       , HP.href "#profile" 
                                                       ]
                                                       [ HH.text "Profile" ] 
+
                                                ]
                                       ]
                              ]
@@ -111,9 +131,7 @@ renderSection = HH.section [ bulmaClass [ BL.hero, BL.isBold
                                                           ]
                                              ]
                                              [ HH.h1 [ HP.class_ $ toHClassName BT.title ] 
-                                                     [ HH.text "Welcome to Chanwoo's blog" 
-                                                     , HE.br_
-                                                     , HH.text "Beautiful Functional Programming"
+                                                     [ HH.text "Beautiful Programming"
                                                      ]
 
                                              ]

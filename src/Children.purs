@@ -43,13 +43,15 @@ testPost1  = Content { title: title, date: date, tag: tag, content: content }
           date = "March 7, 2020"
           tag = "purescript" 
           content =
-              [ HH.p_ [ HH.text "This is test contents" 
+              [ HH.p_ [ HH.text "This is a test contents. I'm happy to create my own blog"
                     , HE.br_
-                    , HH.text "This is test contents"
+                    , HH.text "This is very meaningful to me."
                     , HE.br_
-                    , HH.text "This is test contents"
+                    , HH.text "Here is for introducing algorithms about machine learning and functional programming. these thems are very important to follow the trand of tech."
                     , HE.br_
-                    , HH.text "This is test contents"
+                    , HH.text "I'll try to share much useful information "
+                    , HE.br_
+                    , HH.text "Thank you very much"
                     ]
                   ]
 
