@@ -29,11 +29,8 @@ margin: 5rem 0;
 margin-top: -200px;
 
 }
-.articles .content p {
-line-height: 1.9;
-margin: 15px 0;
 
-}
+
 .author-image {
 position: absolute;
 top: -30px;
@@ -45,15 +42,7 @@ border: 3px solid #ccc;
 border-radius: 50%;
 
 }
-.media-center {
-display: block;
-margin-bottom: 1rem;
 
-}
-.media-content {
-margin-top: 3rem;
-
-}
 .article, .promo-block {
 margin-top: 6rem;
 
@@ -76,8 +65,6 @@ margin-bottom: 3rem;
 }
 .article-body {
 line-height: 1.4;
-/*margin: 0 6rem;*/
-
 }
 .promo-block .container {
 margin: 1rem 5rem;
@@ -87,7 +74,6 @@ margin: 1rem 5rem;
 
 
 /* Profile Page */
-
 
 .has-same-height .card {
       height: 320px;

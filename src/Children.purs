@@ -128,11 +128,12 @@ renderCard (Content { title: title
 
 
 renderPosts :: forall m. Unit -> H.ComponentHTML Void () m
-renderPosts _ = HH.div [ bulmaClass [ BCOL.column
-                                   , BC.unsafeClassName "is-12" 
-                                   , BC.unsafeClassName "is-offset-0"
-                                   ] 
-                      ] $ map renderCard [ testPost1, testPost2 ]
+renderPosts _ = 
+    HH.div [ bulmaClass [ BCOL.column
+                        , BC.unsafeClassName "is-12" 
+                        , BC.unsafeClassName "is-offset-0"
+                        ] 
+           ] $ map renderCard [ testPost1, testPost2 ]
 
 
 
@@ -146,24 +147,25 @@ posts =
 
 
 renderHome :: forall m. Unit -> H.ComponentHTML Void () m
-renderHome _ = HH.section [ bulmaClass [ BC.unsafeClassName "section-heading" ] ] 
-                          [ HH.h2 [ bulmaClass [ BC.unsafeClassName "title" 
-                                               , BC.unsafeClassName "is-1"
-                                               , BC.unsafeClassName "has-text-white"
-                                               , BC.unsafeClassName "has-text-centered"
-                                               ] 
-                                  ]
-                                  [ HH.text "Welcome to Chanwoo's blog" ]
-
-                          , HH.h3 [ bulmaClass [ BC.unsafeClassName "subtitle"
-                                               , BC.unsafeClassName "is-3"
-                                               , BC.unsafeClassName "has-text-white"
-                                               , BC.unsafeClassName "has-text-centered"
-                                               ] 
-                                  ]
-                                  [ HH.text "Blog constructing in progress" ]
-                          ]
-    
+renderHome _ = 
+    HH.section [ bulmaClass [ BC.unsafeClassName "section-heading" ] ] 
+               [ HH.h2 [ bulmaClass [ BC.unsafeClassName "title" 
+                                    , BC.unsafeClassName "is-1"
+                                    , BC.unsafeClassName "has-text-white"
+                                    , BC.unsafeClassName "has-text-centered"
+                                    ] 
+                       ]
+                       [ HH.text "Welcome to Chanwoo's blog" ]
+ 
+               , HH.h3 [ bulmaClass [ BC.unsafeClassName "subtitle"
+                                    , BC.unsafeClassName "is-3"
+                                    , BC.unsafeClassName "has-text-white"
+                                    , BC.unsafeClassName "has-text-centered"
+                                    ] 
+                       ]
+                       [ HH.text "Blog constructing in progress" ]
+               ]
+     
 
 
 
@@ -179,100 +181,209 @@ profile =
 
 
 renderProfile :: forall m. Unit -> H.ComponentHTML Void () m
-renderProfile _ = HH.div_ [ HH.section [ bulmaClass [ BC.unsafeClassName "section-heading" ] ] 
-                                       [ HH.h1 [ bulmaClass [ BC.unsafeClassName "title" 
-                                                            , BC.unsafeClassName "is-1"
-                                                            , BC.unsafeClassName "has-text-white"
-                                                            , BC.unsafeClassName "has-text-centered"
-                                                            ] 
-                                               ]
-                                               [ HH.text "Lee Chanwoo" ]
-    
-                                       , HH.h2 [ bulmaClass [ BC.unsafeClassName "subtitle"
-                                                            , BC.unsafeClassName "is-3"
-                                                            , BC.unsafeClassName "has-text-white"
-                                                            , BC.unsafeClassName "has-text-centered"
-                                                            ] 
-                                               ]
-                                               [ HH.text "Mathmatic Programmer" ]
-                                       ]
+renderProfile _ = 
+    HH.div_ [ HH.section [ bulmaClass [ BC.unsafeClassName "section-heading" ] ] 
+                         [ HH.h1 [ bulmaClass [ BC.unsafeClassName "title" 
+                                              , BC.unsafeClassName "is-1"
+                                              , BC.unsafeClassName "has-text-white"
+                                              , BC.unsafeClassName "has-text-centered"
+                                              ] 
+                                 ]
+                                 [ HH.text "Lee Chanwoo" ]
 
-                          , HH.section [ HP.id_ "about" 
-                                       , bulmaClass [ BC.unsafeClassName "section"
-                                                    , BC.unsafeClassName "section-padding-large"
-                                                    ]
-                                       ]
-                                       [ HH.div [ bulmaClass [ BC.unsafeClassName "section-heading" ] ] 
-                                                [ HH.h3 [ bulmaClass [ BC.unsafeClassName "title" 
-                                                                     , BC.unsafeClassName "is-2"
+                         , HH.h2 [ bulmaClass [ BC.unsafeClassName "subtitle"
+                                              , BC.unsafeClassName "is-3"
+                                              , BC.unsafeClassName "has-text-white"
+                                              , BC.unsafeClassName "has-text-centered"
+                                              ] 
+                                 ]
+                                 [ HH.text "Mathmatic Programmer" ]
+                         ]
+
+            , HH.section [ HP.id_ "about" 
+                         , bulmaClass [ BC.unsafeClassName "section"
+                                      , BC.unsafeClassName "section-padding-large"
+                                      ]
+                         ]
+                         [ HH.div [ bulmaClass [ BC.unsafeClassName "section-heading" ] ] 
+                                  [ HH.h3 [ bulmaClass [ BC.unsafeClassName "title" 
+                                                       , BC.unsafeClassName "is-2"
+                                                       ] 
+                                          ] 
+                                          [ HH.text "About Me" ]
+
+                                  , HH.h4 [ bulmaClass [ BC.unsafeClassName "subtitle" 
+                                                       , BC.unsafeClassName "is-5"
+                                                       ] 
+                                          ]
+                                          [ HH.text "Tech All Rounder" ]
+
+                                  , HH.div [ bulmaClass [ BC.unsafeClassName "container" ] ]
+                                           [ HH.p_ [ HH.text "I'm the all rounder of development, system design etc." ] 
+                                           ]
+                                  ]
+
+                         , HH.div [ bulmaClass [ BC.unsafeClassName "columns" 
+                                               , BC.unsafeClassName "has-same-height"
+                                               , BC.unsafeClassName "is-gapless"
+                                               ] 
+                                  ]
+                                  [ HH.div [ bulmaClass [ BC.unsafeClassName "column" ] ]
+                                           [ HH.div [ bulmaClass [ BC.unsafeClassName "card" ] ] 
+                                                    [ HH.div [ bulmaClass [ BC.unsafeClassName "card-content" ] ] 
+                                                             [ HH.h3 [ bulmaClass [ BC.unsafeClassName "title" 
+                                                                                   , BC.unsafeClassName "is-4"
+                                                                                   ] 
                                                                      ] 
-                                                        ] 
-                                                        [ HH.text "About Me" ]
+                                                                     [ HH.text "Profile" ]
 
-                                                , HH.h4 [ bulmaClass [ BC.unsafeClassName "subtitle" 
-                                                                     , BC.unsafeClassName "is-5"
-                                                                     ] 
-                                                        ]
-                                                        [ HH.text "Tech All Rounder" ]
+                                                             , HH.div [ bulmaClass [ BC.unsafeClassName "content" ] ]
+                                                                      [ HE.table [ bulmaClass [ BC.unsafeClassName "table-profile" ] ]
+                                                                                 [ HE.tbody_ [ HE.tr_ [ HE.th [ HP.colSpan 1 ] []
+                                                                                                      , HE.th [ HP.colSpan 2 ] []
+                                                                                                      ] 
+                                                                                             , HE.tr_ [ HE.td_ [ HH.text "Address:" ] 
+                                                                                                      , HE.td_ [ HH.text "Guru's Lab" ]
+                                                                                                      ]
+                                                                                             , HE.tr_ [ HE.td_ [ HH.text "Phone:" ]
+                                                                                                      , HE.td_ [ HH.text "0123-456789" ]  
+                                                                                                      ]
+                                                                                             , HE.tr_ [ HE.td_ [ HH.text "Email:" ]
+                                                                                                      , HE.td_ [ HH.text "minion@despicable.me" ]
+                                                                                                      ]
+                                                                                             ] 
+                                                                                 ]
+                                                                      ] 
 
-                                                , HH.div [ bulmaClass [ BC.unsafeClassName "container" ] ]
-                                                         [ HH.p_ [ HH.text "I'm the all rounder of development, system design etc." ] 
-                                                         ]
-                                                ]
 
-                                       , HH.div [ bulmaClass [ BC.unsafeClassName "columns" 
-                                                             , BC.unsafeClassName "has-same-height"
-                                                             , BC.unsafeClassName "is-gapless"
+                                                             , HH.br_
+                                                             , HH.div [ bulmaClass  [ BC.unsafeClassName "buttons" ] ]
+                                                                      [ HH.a [ bulmaClass [ BC.unsafeClassName "button" ] ] 
+                                                                             [ HH.text "Github" ]
+                                                                      , HH.a [ bulmaClass [ BC.unsafeClassName "button" ] ]
+                                                                             [ HH.text "LinkedIn" ]
+                                                                      , HH.a [ bulmaClass [ BC.unsafeClassName "button" ] ]
+                                                                             [ HH.text "Twitter" ]
+                                                                      ]
+
                                                              ] 
-                                                ]
-                                                [ HH.div [ bulmaClass [ BC.unsafeClassName "column" ] ]
-                                                         [ HH.div [ bulmaClass [ BC.unsafeClassName "card" ] ] 
-                                                                  [ HH.div [ bulmaClass [ BC.unsafeClassName "card-content" ] ] 
-                                                                           [ HH.h3 [ bulmaClass [ BC.unsafeClassName "title" 
-                                                                                                 , BC.unsafeClassName "is-4"
-                                                                                                 ] 
-                                                                                   ] 
-                                                                                   [ HH.text "Profile" ]
+                                                    ]
+                                           ]
+                                  , HH.div [ bulmaClass [ BC.unsafeClassName "column" ] ]
+                                           [ HH.div [ bulmaClass [ BC.unsafeClassName "card" ] ] 
+                                                    [ HH.div [ bulmaClass [ BC.unsafeClassName "card-image" ] ] 
+                                                             [ HE.figure [ bulmaClass [ BC.unsafeClassName "image" 
+                                                                                      , BC.unsafeClassName "is-4by3"
+                                                                                      ] 
+                                                                         ]
+                                                                         [ HE.img [ HP.src "https://source.unsplash.com/random/1280x960"
+                                                                                  , HP.alt "Placeholder image"
+                                                                                  ] 
+                                                                         ]
+                                                             ]
+                                                    ]
+                                           ]
 
-                                                                           , HH.div [ bulmaClass [ BC.unsafeClassName "content" ] ]
-                                                                                    [ HH.text "profile" ]
-                                                                           , HH.br_
-                                                                           , HH.div [ bulmaClass  [ BC.unsafeClassName "buttons" ] ]
-                                                                                    [ HH.a [ bulmaClass [ BC.unsafeClassName "button" ] ] 
-                                                                                           [ HH.text "Github" ]
-                                                                                    , HH.a [ bulmaClass [ BC.unsafeClassName "button" ] ]
-                                                                                           [ HH.text "LinkedIn" ]
-                                                                                    , HH.a [ bulmaClass [ BC.unsafeClassName "button" ] ]
-                                                                                           [ HH.text "Twitter" ]
-                                                                                    ]
-                                                                           ] 
-                                                                  ]
-                                                         ]
-                                                , HH.div [ bulmaClass [ BC.unsafeClassName "column" ] ]
-                                                         [ HH.div [ bulmaClass [ BC.unsafeClassName "card" ] ] 
-                                                                  [ HH.div [ bulmaClass [ BC.unsafeClassName "card-image" ] ] 
-                                                                           [ HH.text "picture" ]
-                                                                  ]
-                                                         ]
-                                                , HH.div [ bulmaClass [ BC.unsafeClassName "column" ] ]
-                                                         [ HH.div [ bulmaClass [ BC.unsafeClassName "card" ] ]
-                                                                  [ HH.div [ bulmaClass [ BC.unsafeClassName "card-content" 
-                                                                                        , BC.unsafeClassName "skills-content"
-                                                                                        ] 
-                                                                           ] 
-                                                                           [ HH.h3 [ bulmaClass [ BC.unsafeClassName "title"
-                                                                                                , BC.unsafeClassName "is-4" 
-                                                                                                ] 
-                                                                                   ] 
-                                                                                   [ HH.text "Skills" ]
-                                                                           ]
-                                                                  ]
-                                                         ]
-                                                ]
-                                       ]
-                          ]
+
+                                  , HH.div [ bulmaClass [ BC.unsafeClassName "column" ] ]
+                                           [ HH.div [ bulmaClass [ BC.unsafeClassName "card" ] ]
+                                                    [ HH.div [ bulmaClass [ BC.unsafeClassName "card-content" 
+                                                                          , BC.unsafeClassName "skills-content"
+                                                                          ] 
+                                                             ] 
+                                                             [ HH.h3 [ bulmaClass [ BC.unsafeClassName "title"
+                                                                                  , BC.unsafeClassName "is-4" 
+                                                                                  ] 
+                                                                     ] 
+                                                                     [ HH.text "Skills" ]
+
+                                                             , HH.div [ bulmaClass [ BC.unsafeClassName "content"] ]
+                                                                      [ HH.article [ bulmaClass [ BC.unsafeClassName "media" ] ] 
+                                                                                   [ HH.div [ bulmaClass [ BC.unsafeClassName "media-content" ] ]
+                                                                                            [ HH.div [ bulmaClass [ BC.unsafeClassName "content" ] ] 
+                                                                                                     [ HH.p_ [ HE.strong_ [ HH.text "JavaScript" ]
+                                                                                                             , HH.br_
+                                                                                                             , HE.progress [ bulmaClass [ BC.unsafeClassName "progress"
+                                                                                                                                , BC.unsafeClassName "is-primary" 
+                                                                                                                                ] 
+                                                                                                                   , HP.attr (HH.AttrName "value") "90"
+                                                                                                                   , HP.attr (HH.AttrName "max") "100"
+                                                                                                                   ]  [] -- progress
+                                                                                                             ] -- p_
+                                                                                                     ] -- media-content
+                                                                                            ] -- content
+                                                                                   ] -- media
+
+                                                                      , HH.article [ bulmaClass [ BC.unsafeClassName "media" ] ] 
+                                                                                   [ HH.div [ bulmaClass [ BC.unsafeClassName "media-content" ] ]
+                                                                                            [ HH.div [ bulmaClass [ BC.unsafeClassName "content" ] ] 
+                                                                                                     [ HH.p_ [ HE.strong_ [ HH.text "JavaScript" ]
+                                                                                                             , HH.br_
+                                                                                                             , HE.progress [ bulmaClass [ BC.unsafeClassName "progress"
+                                                                                                                                , BC.unsafeClassName "is-primary" 
+                                                                                                                                ] 
+                                                                                                                   , HP.attr (HH.AttrName "value") "90"
+                                                                                                                   , HP.attr (HH.AttrName "max") "100"
+                                                                                                                   ]  [] -- progress
+                                                                                                             ] -- p_
+                                                                                                     ] -- media-content
+                                                                                            ] -- content
+                                                                                   ] -- media
+
+                                                                      , HH.article [ bulmaClass [ BC.unsafeClassName "media" ] ] 
+                                                                                   [ HH.div [ bulmaClass [ BC.unsafeClassName "media-content" ] ]
+                                                                                            [ HH.div [ bulmaClass [ BC.unsafeClassName "content" ] ] 
+                                                                                                     [ HH.p_ [ HE.strong_ [ HH.text "JavaScript" ]
+                                                                                                             , HH.br_
+                                                                                                             , HE.progress [ bulmaClass [ BC.unsafeClassName "progress"
+                                                                                                                                , BC.unsafeClassName "is-primary" 
+                                                                                                                                ] 
+                                                                                                                   , HP.attr (HH.AttrName "value") "90"
+                                                                                                                   , HP.attr (HH.AttrName "max") "100"
+                                                                                                                   ]  [] -- progress
+                                                                                                             ] -- p_
+                                                                                                     ] -- media-content
+                                                                                            ] -- content
+                                                                                   ] -- media
+
+                                                                      , HH.article [ bulmaClass [ BC.unsafeClassName "media" ] ] 
+                                                                                   [ HH.div [ bulmaClass [ BC.unsafeClassName "media-content" ] ]
+                                                                                            [ HH.div [ bulmaClass [ BC.unsafeClassName "content" ] ] 
+                                                                                                     [ HH.p_ [ HE.strong_ [ HH.text "JavaScript" ]
+                                                                                                             , HH.br_
+                                                                                                             , HE.progress [ bulmaClass [ BC.unsafeClassName "progress"
+                                                                                                                                , BC.unsafeClassName "is-primary" 
+                                                                                                                                ] 
+                                                                                                                   , HP.attr (HH.AttrName "value") "90"
+                                                                                                                   , HP.attr (HH.AttrName "max") "100"
+                                                                                                                   ]  [] -- progress
+                                                                                                             ] -- p_
+                                                                                                     ] -- media-content
+                                                                                            ] -- content
+                                                                                   ] -- media
+
+                                                                      , HH.article [ bulmaClass [ BC.unsafeClassName "media" ] ] 
+                                                                                   [ HH.div [ bulmaClass [ BC.unsafeClassName "media-content" ] ]
+                                                                                            [ HH.div [ bulmaClass [ BC.unsafeClassName "content" ] ] 
+                                                                                                     [ HH.p_ [ HE.strong_ [ HH.text "JavaScript" ]
+                                                                                                             , HH.br_
+                                                                                                             , HE.progress [ bulmaClass [ BC.unsafeClassName "progress"
+                                                                                                                                , BC.unsafeClassName "is-primary" 
+                                                                                                                                ] 
+                                                                                                                   , HP.attr (HH.AttrName "value") "90"
+                                                                                                                   , HP.attr (HH.AttrName "max") "100"
+                                                                                                                   ]  [] -- progress
+                                                                                                             ] -- p_
+                                                                                                     ] -- media-content
+                                                                                            ] -- content
+                                                                                   ] -- media
+                                                                      ] -- content
+                                                             ] -- card-content
+                                                    ] -- card
+                                           ] -- column
+                                  ] -- columns
+                         ] -- section
+            ] -- section-heading
                                         
-
-
 
 
