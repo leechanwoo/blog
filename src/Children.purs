@@ -12,6 +12,7 @@ import Halogen.HTML.Core (ClassName(..), HTML)
 
 import Bulma.Common as BC
 import Bulma.Columns.Columns as BCOL
+import Bulma.Layout.Layout as BL
 
 type Slot = H.Slot (Const Void) Void
 
@@ -74,9 +75,6 @@ testPost2  = Content { title: title, date: date, tag: tag, content: content }
 
 
 
-
-
-
 renderCard :: forall p i. Content p i -> HTML p i
 renderCard (Content { title: title  
                     , content: content    
@@ -90,11 +88,13 @@ renderCard (Content { title: title
                    [ HH.div [ bulmaClass [ BC.unsafeClassName "card-content" ] ]
                             [ HH.div [ bulmaClass [ BC.unsafeClassName "media" ] ] 
                                      [ HH.div [ bulmaClass [ BC.unsafeClassName "media-content" 
-                                                           , BC.unsafeClassName "has-text-centered"
+                                                           --, BC.unsafeClassName "has-text-centered"
                                                            ] 
                                               ] 
                                               [ HH.p [ bulmaClass [ BC.unsafeClassName "title"
-                                                                  , BC.unsafeClassName "article-title"] 
+                                                                  , BC.unsafeClassName "article-title"
+                                                                  , BC.unsafeClassName "has-text-centered"
+                                                                  ] 
                                                      ]
                                                      [ HH.text title ]
 
@@ -133,13 +133,10 @@ renderCard (Content { title: title
 
 renderPosts :: forall m. Unit -> H.ComponentHTML Void () m
 renderPosts _ = HH.div [ bulmaClass [ BCOL.column
-                                   , BC.unsafeClassName "is-8" 
-                                   , BC.unsafeClassName "is-offset-2"
+                                   , BC.unsafeClassName "is-12" 
+                                   , BC.unsafeClassName "is-offset-0"
                                    ] 
                       ] $ map renderCard [ testPost1, testPost2 ]
-
-
-
 
 
 
@@ -167,7 +164,65 @@ profile =
                   }
 
 
+
+
 renderProfile :: forall m. Unit -> H.ComponentHTML Void () m
-renderProfile _ = HH.ul_ [ HH.li_ [ HH.text "Athlete" ] 
-                       , HH.li_ [ HH.text "Pink Fir" ]
-                       ]
+renderProfile _ = HH.div_ [ HH.div [ bulmaClass [ BCOL.column
+                                                , BC.unsafeClassName "is-6"
+                                                , BC.unsafeClassName "is-offset-3"] 
+                                   ] 
+                                   [ HH.div [ bulmaClass [ BC.unsafeClassName "card" 
+                                                            , BC.unsafeClassName "article"
+                                                            , BC.unsafeClassName "has-text-centered" 
+                                                            ] 
+                                               ]
+                                               [ HH.div [ bulmaClass [ BC.unsafeClassName "card-content" ] ]
+                                                        [ HH.div [ bulmaClass [ BC.unsafeClassName "media" ] ] 
+                                                                 [ HH.div [ bulmaClass [ BC.unsafeClassName "media-content" 
+                                                                                       , BC.unsafeClassName "has-text-centered"
+                                                                                       ] 
+                                                                          ] 
+                                                                          [ HH.h1 [ bulmaClass [ BC.unsafeClassName "title" 
+                                                                                               , BC.unsafeClassName "is-1"
+                                                                                               ] 
+                                                                                  ]
+                                                                                  [ HH.text "Lee Chanwoo" ]
+
+                                                                          , HH.h2 [ bulmaClass [ BC.unsafeClassName "subtitle"
+                                                                                               , BC.unsafeClassName "is-3"
+                                                                                               ] 
+                                                                                  ]
+                                                                                  [ HH.text "Mathmatic Programmer" ]
+             
+                                                                          ]
+                                                                 ]
+                                                        ]
+                                               ]
+                                                
+                                   ]
+
+                          , HH.section [ HP.id_ "about" ]
+                                       [ HH.div [ bulmaClass [ BC.unsafeClassName "section-heading" ] ] 
+                                                [ HH.h3 [ bulmaClass [ BC.unsafeClassName "title" 
+                                                                     , BC.unsafeClassName "is-2"
+                                                                     ] 
+                                                        ] 
+                                                        [ HH.text "About Me" ]
+
+                                                , HH.h4 [ bulmaClass [ BC.unsafeClassName "subtitle" 
+                                                                     , BC.unsafeClassName "is-5"
+                                                                     ] 
+                                                        ]
+                                                        [ HH.text "Tech All Rounder" ]
+
+                                                , HH.div [ bulmaClass [ BC.unsafeClassName "container" ] ]
+                                                         [ HH.p_ [ HH.text "I'm the all rounder of development, system design etc." ] 
+                                                         ]
+                                                ]
+                                       ]
+                          ]
+                                        
+
+
+
+

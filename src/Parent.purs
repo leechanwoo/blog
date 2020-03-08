@@ -141,9 +141,9 @@ renderMenu state = HH.nav [ HP.class_ $ toHClassName BN.navbar]
 
 renderSection :: forall m. H.ComponentHTML Action ChildSlots m
 renderSection = HH.section [ bulmaClass [ BL.hero, BL.isBold
-                                           , BC.unsafeClassName "is-info"
-                                           , BC.unsafeClassName "is-medium" 
-                                           ]
+                                        , BC.unsafeClassName "is-info"
+                                        , BC.unsafeClassName "is-medium" 
+                                        ]
                            ]
                            [ HH.div [ HP.class_ $ toHClassName BL.heroBody ]
                                     [ HH.div [ bulmaClass [ BL.container

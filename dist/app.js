@@ -3753,7 +3753,10 @@ var PS = {};
   var Data_Maybe = $PS["Data.Maybe"];
   var Halogen_HTML_Core = $PS["Halogen.HTML.Core"];
   var element = Halogen_HTML_Core.element(Data_Maybe.Nothing.value);
-  var h1 = element("h1");    
+  var h1 = element("h1");
+  var h2 = element("h2");
+  var h3 = element("h3");
+  var h4 = element("h4");    
   var li = element("li");
   var li_ = li([  ]);      
   var nav = element("nav");  
@@ -3776,6 +3779,9 @@ var PS = {};
   exports["div"] = div;
   exports["div_"] = div_;
   exports["h1"] = h1;
+  exports["h2"] = h2;
+  exports["h3"] = h3;
+  exports["h4"] = h4;
   exports["li_"] = li_;
   exports["nav"] = nav;
   exports["p"] = p;
@@ -3844,17 +3850,9 @@ var PS = {};
           content: content
       };
   })();
-  var renderProfile = function (v) {
-      return Halogen_HTML_Elements.ul_([ Halogen_HTML_Elements.li_([ Halogen_HTML_Core.text("Athlete") ]), Halogen_HTML_Elements.li_([ Halogen_HTML_Core.text("Pink Fir") ]) ]);
-  };
   var renderHome = function (v) {
       return Halogen_HTML_Elements.ul_([ Halogen_HTML_Elements.li_([ Halogen_HTML_Core.text("Maris Piper") ]), Halogen_HTML_Elements.li_([ Halogen_HTML_Core.text("Spanish Agria") ]), Halogen_HTML_Elements.li_([ Halogen_HTML_Core.text("Cara") ]) ]);
   };
-  var profile = Halogen_Component.mkComponent({
-      initialState: Data_Function["const"](Data_Unit.unit),
-      render: renderProfile,
-      "eval": Halogen_Component.mkEval(Halogen_Component.defaultEval)
-  });
   var home = Halogen_Component.mkComponent({
       initialState: Data_Function["const"](Data_Unit.unit),
       render: renderHome,
@@ -3864,14 +3862,22 @@ var PS = {};
       return Halogen_HTML_Properties.class_(Halogen_HTML_Core.ClassName(Bulma_Common.runClassNames($9)));
   };
   var renderCard = function (v) {
-      return Halogen_HTML_Elements.div([ bulmaClass([ Bulma_Common.unsafeClassName("card"), Bulma_Common.unsafeClassName("article") ]) ])([ Halogen_HTML_Elements.div([ bulmaClass([ Bulma_Common.unsafeClassName("card-content") ]) ])([ Halogen_HTML_Elements.div([ bulmaClass([ Bulma_Common.unsafeClassName("media") ]) ])([ Halogen_HTML_Elements.div([ bulmaClass([ Bulma_Common.unsafeClassName("media-content"), Bulma_Common.unsafeClassName("has-text-centered") ]) ])([ Halogen_HTML_Elements.p([ bulmaClass([ Bulma_Common.unsafeClassName("title"), Bulma_Common.unsafeClassName("article-title") ]) ])([ Halogen_HTML_Core.text(v.title) ]), Halogen_HTML_Elements.div([ bulmaClass([ Bulma_Common.unsafeClassName("tags"), Bulma_Common.unsafeClassName("has-addons"), Bulma_Common.unsafeClassName("level-item") ]) ])([ Halogen_HTML_Elements.span([ bulmaClass([ Bulma_Common.unsafeClassName("tag"), Bulma_Common.unsafeClassName("is-rounded"), Bulma_Common.unsafeClassName("is-info") ]) ])([ Halogen_HTML_Core.text(v.tag) ]), Halogen_HTML_Elements.span([ bulmaClass([ Bulma_Common.unsafeClassName("tag"), Bulma_Common.unsafeClassName("is-rounded") ]) ])([ Halogen_HTML_Core.text(v.date) ]) ]), Halogen_HTML_Elements.div([ bulmaClass([ Bulma_Common.unsafeClassName("content"), Bulma_Common.unsafeClassName("article-body") ]) ])(v.content) ]) ]) ]) ]);
+      return Halogen_HTML_Elements.div([ bulmaClass([ Bulma_Common.unsafeClassName("card"), Bulma_Common.unsafeClassName("article") ]) ])([ Halogen_HTML_Elements.div([ bulmaClass([ Bulma_Common.unsafeClassName("card-content") ]) ])([ Halogen_HTML_Elements.div([ bulmaClass([ Bulma_Common.unsafeClassName("media") ]) ])([ Halogen_HTML_Elements.div([ bulmaClass([ Bulma_Common.unsafeClassName("media-content") ]) ])([ Halogen_HTML_Elements.p([ bulmaClass([ Bulma_Common.unsafeClassName("title"), Bulma_Common.unsafeClassName("article-title"), Bulma_Common.unsafeClassName("has-text-centered") ]) ])([ Halogen_HTML_Core.text(v.title) ]), Halogen_HTML_Elements.div([ bulmaClass([ Bulma_Common.unsafeClassName("tags"), Bulma_Common.unsafeClassName("has-addons"), Bulma_Common.unsafeClassName("level-item") ]) ])([ Halogen_HTML_Elements.span([ bulmaClass([ Bulma_Common.unsafeClassName("tag"), Bulma_Common.unsafeClassName("is-rounded"), Bulma_Common.unsafeClassName("is-info") ]) ])([ Halogen_HTML_Core.text(v.tag) ]), Halogen_HTML_Elements.span([ bulmaClass([ Bulma_Common.unsafeClassName("tag"), Bulma_Common.unsafeClassName("is-rounded") ]) ])([ Halogen_HTML_Core.text(v.date) ]) ]), Halogen_HTML_Elements.div([ bulmaClass([ Bulma_Common.unsafeClassName("content"), Bulma_Common.unsafeClassName("article-body") ]) ])(v.content) ]) ]) ]) ]);
   };
   var renderPosts = function (v) {
-      return Halogen_HTML_Elements.div([ bulmaClass([ Bulma_Columns_Columns.column, Bulma_Common.unsafeClassName("is-8"), Bulma_Common.unsafeClassName("is-offset-2") ]) ])(Data_Functor.map(Data_Functor.functorArray)(renderCard)([ testPost1, testPost2 ]));
+      return Halogen_HTML_Elements.div([ bulmaClass([ Bulma_Columns_Columns.column, Bulma_Common.unsafeClassName("is-12"), Bulma_Common.unsafeClassName("is-offset-0") ]) ])(Data_Functor.map(Data_Functor.functorArray)(renderCard)([ testPost1, testPost2 ]));
   };
   var posts = Halogen_Component.mkComponent({
       initialState: Data_Function["const"](Data_Unit.unit),
       render: renderPosts,
+      "eval": Halogen_Component.mkEval(Halogen_Component.defaultEval)
+  });
+  var renderProfile = function (v) {
+      return Halogen_HTML_Elements.div_([ Halogen_HTML_Elements.div([ bulmaClass([ Bulma_Columns_Columns.column, Bulma_Common.unsafeClassName("is-6"), Bulma_Common.unsafeClassName("is-offset-3") ]) ])([ Halogen_HTML_Elements.div([ bulmaClass([ Bulma_Common.unsafeClassName("card"), Bulma_Common.unsafeClassName("article"), Bulma_Common.unsafeClassName("has-text-centered") ]) ])([ Halogen_HTML_Elements.div([ bulmaClass([ Bulma_Common.unsafeClassName("card-content") ]) ])([ Halogen_HTML_Elements.div([ bulmaClass([ Bulma_Common.unsafeClassName("media") ]) ])([ Halogen_HTML_Elements.div([ bulmaClass([ Bulma_Common.unsafeClassName("media-content"), Bulma_Common.unsafeClassName("has-text-centered") ]) ])([ Halogen_HTML_Elements.h1([ bulmaClass([ Bulma_Common.unsafeClassName("title"), Bulma_Common.unsafeClassName("is-1") ]) ])([ Halogen_HTML_Core.text("Lee Chanwoo") ]), Halogen_HTML_Elements.h2([ bulmaClass([ Bulma_Common.unsafeClassName("subtitle"), Bulma_Common.unsafeClassName("is-3") ]) ])([ Halogen_HTML_Core.text("Mathmatic Programmer") ]) ]) ]) ]) ]) ]), Halogen_HTML_Elements.section([ Halogen_HTML_Properties.id_("about") ])([ Halogen_HTML_Elements.div([ bulmaClass([ Bulma_Common.unsafeClassName("section-heading") ]) ])([ Halogen_HTML_Elements.h3([ bulmaClass([ Bulma_Common.unsafeClassName("title"), Bulma_Common.unsafeClassName("is-2") ]) ])([ Halogen_HTML_Core.text("About Me") ]), Halogen_HTML_Elements.h4([ bulmaClass([ Bulma_Common.unsafeClassName("subtitle"), Bulma_Common.unsafeClassName("is-5") ]) ])([ Halogen_HTML_Core.text("Tech All Rounder") ]), Halogen_HTML_Elements.div([ bulmaClass([ Bulma_Common.unsafeClassName("container") ]) ])([ Halogen_HTML_Elements.p_([ Halogen_HTML_Core.text("I'm the all rounder of development, system design etc.") ]) ]) ]) ]) ]);
+  };
+  var profile = Halogen_Component.mkComponent({
+      initialState: Data_Function["const"](Data_Unit.unit),
+      render: renderProfile,
       "eval": Halogen_Component.mkEval(Halogen_Component.defaultEval)
   });
   exports["home"] = home;
@@ -8782,7 +8788,7 @@ var PS = {};
   var Parent = $PS["Parent"];
   var Router = $PS["Router"];                
   var main = Halogen_Aff_Util.runHalogenAff(Control_Bind.bind(Effect_Aff.bindAff)(Halogen_Aff_Util.awaitBody)(function (body) {
-      return Control_Bind.bind(Effect_Aff.bindAff)(Effect_Class.liftEffect(Effect_Aff.monadEffectAff)(Data_Functor.map(Effect.functorEffect)(Data_Maybe.fromMaybe(Router.Posts.value))(Router.getRoute)))(function (current) {
+      return Control_Bind.bind(Effect_Aff.bindAff)(Effect_Class.liftEffect(Effect_Aff.monadEffectAff)(Data_Functor.map(Effect.functorEffect)(Data_Maybe.fromMaybe(Router.Home.value))(Router.getRoute)))(function (current) {
           return Control_Bind.bind(Effect_Aff.bindAff)(Halogen_VDom_Driver.runUI(Parent.page)(current)(body))(function (io) {
               var changeRoute = function (route) {
                   return Effect_Aff.launchAff_(io.query(Halogen_Query.tell(Parent.ChangeRoute.create(route))));
