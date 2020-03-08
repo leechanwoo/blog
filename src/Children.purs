@@ -20,7 +20,6 @@ bulmaClass :: forall r i. Array BC.ClassName -> HP.IProp (class :: String | r) i
 bulmaClass = HP.class_ <<< ClassName  <<< BC.runClassNames
 
 
-
 home :: forall m. H.Component HH.HTML (Const Void) Unit Void m
 home =
     H.mkComponent { initialState: const unit
