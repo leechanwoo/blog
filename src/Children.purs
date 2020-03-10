@@ -11,7 +11,17 @@ import Halogen.HTML.Elements as HE
 import Halogen.HTML.Core (ClassName(..), HTML)
 
 import Bulma.Common as BC
-import Bulma.Columns.Columns as BCOL
+import Bulma.Form.Common as BF
+import Bulma.Columns.Columns as BCL
+import Bulma.Components.Card as BCD
+import Bulma.Elements.Title as BTT
+import Bulma.Elements.Tag as BTG
+import Bulma.Elements.Elements as BE
+import Bulma.Elements.Button as BBT
+import Bulma.Elements.Image as BIM
+import Bulma.Columns.Size as BSZ
+import Bulma.Modifiers.Typography as BTP
+import Bulma.Layout.Layout as BL
 
 type Slot = H.Slot (Const Void) Void
 
@@ -79,41 +89,41 @@ renderCard (Content { title: title
                     , date: date
                     , tag: tag
                     }) = 
-            HH.div [ bulmaClass [ BC.unsafeClassName "card"
+            HH.div [ bulmaClass [ BCD.card
                                 , BC.unsafeClassName "article"
                                 ] 
                    ]
-                   [ HH.div [ bulmaClass [ BC.unsafeClassName "card-content" ] ]
-                            [ HH.div [ bulmaClass [ BC.unsafeClassName "media" ] ] 
-                                     [ HH.div [ bulmaClass [ BC.unsafeClassName "media-content" ] ] 
-                                              [ HH.p [ bulmaClass [ BC.unsafeClassName "title"
+                   [ HH.div [ bulmaClass [ BCD.cardContent ] ]
+                            [ HH.div [ bulmaClass [ BL.media ] ] 
+                                     [ HH.div [ bulmaClass [ BL.mediaContent ] ] 
+                                              [ HH.p [ bulmaClass [ BTT.title
                                                                   , BC.unsafeClassName "article-title"
-                                                                  , BC.unsafeClassName "has-text-centered"
+                                                                  , BTP.hasAlignment BTP.Centered 
                                                                   ] 
                                                      ]
                                                      [ HH.text title ]
 
-                                              , HH.div [ bulmaClass [ BC.unsafeClassName "tags"
-                                                                    , BC.unsafeClassName "has-addons"
-                                                                    , BC.unsafeClassName "level-item" 
+                                              , HH.div [ bulmaClass [ BTG.tags
+                                                                    , BC.hasAddons
+                                                                    , BL.levelItem 
                                                                     ] 
                                                        ]
-                                                       [ HH.span [ bulmaClass [ BC.unsafeClassName "tag"
-                                                                              , BC.unsafeClassName "is-rounded"
+                                                       [ HH.span [ bulmaClass [ BTG.tag
+                                                                              , BF.isRounded
                                                                               , BC.unsafeClassName "is-info"
                                                                               ]
                                                                  ] 
                                                                  [ HH.text tag ]
 
-                                                       , HH.span [ bulmaClass [ BC.unsafeClassName "tag"
-                                                                              , BC.unsafeClassName "is-rounded"
+                                                       , HH.span [ bulmaClass [ BTG.tag
+                                                                              , BF.isRounded
                                                                               ]
                                                                  ] 
                                                                  [ HH.text date ]
 
                                                        ]
 
-                                              , HH.div [ bulmaClass [ BC.unsafeClassName "content"
+                                              , HH.div [ bulmaClass [ BE.content
                                                                     , BC.unsafeClassName "article-body"
                                                                     ] 
                                                        ] content
@@ -128,9 +138,9 @@ renderCard (Content { title: title
 
 renderPosts :: forall m. Unit -> H.ComponentHTML Void () m
 renderPosts _ = 
-    HH.div [ bulmaClass [ BCOL.column
-                        , BC.unsafeClassName "is-12" 
-                        , BC.unsafeClassName "is-offset-0"
+    HH.div [ bulmaClass [ BCL.column
+                        , BC.unsafeClassName "is-10"
+                        , BSZ.isOffset BC.Is1
                         ] 
            ] $ map renderCard [ testPost1, testPost2 ]
 
@@ -148,18 +158,18 @@ posts =
 renderHome :: forall m. Unit -> H.ComponentHTML Void () m
 renderHome _ = 
     HH.section [ bulmaClass [ BC.unsafeClassName "section-heading" ] ] 
-               [ HH.h2 [ bulmaClass [ BC.unsafeClassName "title" 
+               [ HH.h2 [ bulmaClass [ BTT.title
                                     , BC.unsafeClassName "is-1"
-                                    , BC.unsafeClassName "has-text-white"
-                                    , BC.unsafeClassName "has-text-centered"
+                                    , BTP.hasColor BTP.White
+                                    , BTP.hasAlignment BTP.Centered
                                     ] 
                        ]
                        [ HH.text "Welcome to Chanwoo's blog" ]
  
-               , HH.h3 [ bulmaClass [ BC.unsafeClassName "subtitle"
+               , HH.h3 [ bulmaClass [ BTT.subtitle
                                     , BC.unsafeClassName "is-3"
-                                    , BC.unsafeClassName "has-text-white"
-                                    , BC.unsafeClassName "has-text-centered"
+                                    , BTP.hasColor BTP.White
+                                    , BTP.hasAlignment BTP.Centered
                                     ] 
                        ]
                        [ HH.text "Blog constructing in progress" ]
@@ -182,61 +192,61 @@ profile =
 renderProfile :: forall m. Unit -> H.ComponentHTML Void () m
 renderProfile _ = 
     HH.div_ [ HH.section [ bulmaClass [ BC.unsafeClassName "section-heading" ] ] 
-                         [ HH.h1 [ bulmaClass [ BC.unsafeClassName "title" 
+                         [ HH.h1 [ bulmaClass [ BTT.title
                                               , BC.unsafeClassName "is-1"
-                                              , BC.unsafeClassName "has-text-white"
-                                              , BC.unsafeClassName "has-text-centered"
+                                              , BTP.hasColor BTP.White
+                                              , BTP.hasAlignment BTP.Centered
                                               ] 
                                  ]
                                  [ HH.text "Lee Chanwoo" ]
 
-                         , HH.h2 [ bulmaClass [ BC.unsafeClassName "subtitle"
+                         , HH.h2 [ bulmaClass [ BTT.subtitle
                                               , BC.unsafeClassName "is-3"
-                                              , BC.unsafeClassName "has-text-white"
-                                              , BC.unsafeClassName "has-text-centered"
+                                              , BTP.hasColor BTP.White
+                                              , BTP.hasAlignment BTP.Centered
                                               ] 
                                  ]
                                  [ HH.text "Mathmatic Programmer" ]
-                         ]
+                         ] -- section-heading
 
             , HH.section [ HP.id_ "about" 
-                         , bulmaClass [ BC.unsafeClassName "section"
+                         , bulmaClass [ BL.section
                                       , BC.unsafeClassName "section-padding-large"
                                       ]
                          ]
                          [ HH.div [ bulmaClass [ BC.unsafeClassName "section-heading" ] ] 
-                                  [ HH.h3 [ bulmaClass [ BC.unsafeClassName "title" 
+                                  [ HH.h3 [ bulmaClass [ BTT.title
                                                        , BC.unsafeClassName "is-2"
                                                        ] 
                                           ] 
                                           [ HH.text "About Me" ]
 
-                                  , HH.h4 [ bulmaClass [ BC.unsafeClassName "subtitle" 
+                                  , HH.h4 [ bulmaClass [ BTT.subtitle
                                                        , BC.unsafeClassName "is-5"
                                                        ] 
                                           ]
                                           [ HH.text "Tech All Rounder" ]
 
-                                  , HH.div [ bulmaClass [ BC.unsafeClassName "container" ] ]
+                                  , HH.div [ bulmaClass [ BL.container ] ]
                                            [ HH.p_ [ HH.text "I'm the all rounder of development, system design etc." ] 
                                            ]
                                   ]
 
-                         , HH.div [ bulmaClass [ BC.unsafeClassName "columns" 
+                         , HH.div [ bulmaClass [ BCL.columns
                                                , BC.unsafeClassName "has-same-height"
-                                               , BC.unsafeClassName "is-gapless"
+                                               , BCL.isGapless
                                                ] 
                                   ]
-                                  [ HH.div [ bulmaClass [ BC.unsafeClassName "column" ] ]
-                                           [ HH.div [ bulmaClass [ BC.unsafeClassName "card" ] ] 
-                                                    [ HH.div [ bulmaClass [ BC.unsafeClassName "card-content" ] ] 
-                                                             [ HH.h3 [ bulmaClass [ BC.unsafeClassName "title" 
+                                  [ HH.div [ bulmaClass [ BCL.column ] ]
+                                           [ HH.div [ bulmaClass [ BCD.card ] ] 
+                                                    [ HH.div [ bulmaClass [ BCD.cardContent ] ] 
+                                                             [ HH.h3 [ bulmaClass [ BTT.title 
                                                                                    , BC.unsafeClassName "is-4"
                                                                                    ] 
                                                                      ] 
                                                                      [ HH.text "Profile" ]
 
-                                                             , HH.div [ bulmaClass [ BC.unsafeClassName "content" ] ]
+                                                             , HH.div [ bulmaClass [ BE.content ] ]
                                                                       [ HE.table [ bulmaClass [ BC.unsafeClassName "table-profile" ] ]
                                                                                  [ HE.tbody_ [ HE.tr_ [ HE.th [ HP.colSpan 1 ] []
                                                                                                       , HE.th [ HP.colSpan 2 ] []
@@ -256,22 +266,22 @@ renderProfile _ =
 
 
                                                              , HH.br_
-                                                             , HH.div [ bulmaClass  [ BC.unsafeClassName "buttons" ] ]
-                                                                      [ HH.a [ bulmaClass [ BC.unsafeClassName "button" ] ] 
+                                                             , HH.div [ bulmaClass  [ BBT.buttons ] ]
+                                                                      [ HH.a [ bulmaClass [ BBT.button ] ] 
                                                                              [ HH.text "Github" ]
-                                                                      , HH.a [ bulmaClass [ BC.unsafeClassName "button" ] ]
+                                                                      , HH.a [ bulmaClass [ BBT.button ] ]
                                                                              [ HH.text "LinkedIn" ]
-                                                                      , HH.a [ bulmaClass [ BC.unsafeClassName "button" ] ]
+                                                                      , HH.a [ bulmaClass [ BBT.button ] ]
                                                                              [ HH.text "Twitter" ]
                                                                       ]
 
                                                              ] 
                                                     ]
                                            ]
-                                  , HH.div [ bulmaClass [ BC.unsafeClassName "column" ] ]
-                                           [ HH.div [ bulmaClass [ BC.unsafeClassName "card" ] ] 
-                                                    [ HH.div [ bulmaClass [ BC.unsafeClassName "card-image" ] ] 
-                                                             [ HE.figure [ bulmaClass [ BC.unsafeClassName "image" 
+                                  , HH.div [ bulmaClass [ BCL.column ] ]
+                                           [ HH.div [ bulmaClass [ BCD.card ] ] 
+                                                    [ HH.div [ bulmaClass [ BCD.cardImage ] ] 
+                                                             [ HE.figure [ bulmaClass [ BIM.image
                                                                                       , BC.unsafeClassName "is-4by3"
                                                                                       ] 
                                                                          ]
@@ -284,22 +294,22 @@ renderProfile _ =
                                            ]
 
 
-                                  , HH.div [ bulmaClass [ BC.unsafeClassName "column" ] ]
-                                           [ HH.div [ bulmaClass [ BC.unsafeClassName "card" ] ]
-                                                    [ HH.div [ bulmaClass [ BC.unsafeClassName "card-content" 
+                                  , HH.div [ bulmaClass [ BCL.column ] ]
+                                           [ HH.div [ bulmaClass [ BCD.card ] ]
+                                                    [ HH.div [ bulmaClass [ BCD.cardContent 
                                                                           , BC.unsafeClassName "skills-content"
                                                                           ] 
                                                              ] 
-                                                             [ HH.h3 [ bulmaClass [ BC.unsafeClassName "title"
+                                                             [ HH.h3 [ bulmaClass [ BTT.title
                                                                                   , BC.unsafeClassName "is-4" 
                                                                                   ] 
                                                                      ] 
                                                                      [ HH.text "Skills" ]
 
-                                                             , HH.div [ bulmaClass [ BC.unsafeClassName "content"] ]
-                                                                      [ HH.article [ bulmaClass [ BC.unsafeClassName "media" ] ] 
-                                                                                   [ HH.div [ bulmaClass [ BC.unsafeClassName "media-content" ] ]
-                                                                                            [ HH.div [ bulmaClass [ BC.unsafeClassName "content" ] ] 
+                                                             , HH.div [ bulmaClass [ BE.content] ]
+                                                                      [ HH.article [ bulmaClass [ BL.media ] ] 
+                                                                                   [ HH.div [ bulmaClass [ BL.mediaContent ] ]
+                                                                                            [ HH.div [ bulmaClass [ BE.content ] ] 
                                                                                                      [ HH.p_ [ HE.strong_ [ HH.text "JavaScript" ]
                                                                                                              , HH.br_
                                                                                                              , HE.progress [ bulmaClass [ BC.unsafeClassName "progress"
@@ -313,9 +323,9 @@ renderProfile _ =
                                                                                             ] -- content
                                                                                    ] -- media
 
-                                                                      , HH.article [ bulmaClass [ BC.unsafeClassName "media" ] ] 
-                                                                                   [ HH.div [ bulmaClass [ BC.unsafeClassName "media-content" ] ]
-                                                                                            [ HH.div [ bulmaClass [ BC.unsafeClassName "content" ] ] 
+                                                                      , HH.article [ bulmaClass [ BL.media ] ] 
+                                                                                   [ HH.div [ bulmaClass [ BL.mediaContent ] ]
+                                                                                            [ HH.div [ bulmaClass [ BE.content ] ] 
                                                                                                      [ HH.p_ [ HE.strong_ [ HH.text "JavaScript" ]
                                                                                                              , HH.br_
                                                                                                              , HE.progress [ bulmaClass [ BC.unsafeClassName "progress"
@@ -329,9 +339,9 @@ renderProfile _ =
                                                                                             ] -- content
                                                                                    ] -- media
 
-                                                                      , HH.article [ bulmaClass [ BC.unsafeClassName "media" ] ] 
-                                                                                   [ HH.div [ bulmaClass [ BC.unsafeClassName "media-content" ] ]
-                                                                                            [ HH.div [ bulmaClass [ BC.unsafeClassName "content" ] ] 
+                                                                      , HH.article [ bulmaClass [ BL.media ] ] 
+                                                                                   [ HH.div [ bulmaClass [ BL.mediaContent ] ]
+                                                                                            [ HH.div [ bulmaClass [ BE.content ] ] 
                                                                                                      [ HH.p_ [ HE.strong_ [ HH.text "JavaScript" ]
                                                                                                              , HH.br_
                                                                                                              , HE.progress [ bulmaClass [ BC.unsafeClassName "progress"
@@ -345,9 +355,9 @@ renderProfile _ =
                                                                                             ] -- content
                                                                                    ] -- media
 
-                                                                      , HH.article [ bulmaClass [ BC.unsafeClassName "media" ] ] 
-                                                                                   [ HH.div [ bulmaClass [ BC.unsafeClassName "media-content" ] ]
-                                                                                            [ HH.div [ bulmaClass [ BC.unsafeClassName "content" ] ] 
+                                                                      , HH.article [ bulmaClass [ BL.media ] ] 
+                                                                                   [ HH.div [ bulmaClass [ BL.mediaContent ] ]
+                                                                                            [ HH.div [ bulmaClass [ BE.content ] ] 
                                                                                                      [ HH.p_ [ HE.strong_ [ HH.text "JavaScript" ]
                                                                                                              , HH.br_
                                                                                                              , HE.progress [ bulmaClass [ BC.unsafeClassName "progress"
@@ -361,9 +371,9 @@ renderProfile _ =
                                                                                             ] -- content
                                                                                    ] -- media
 
-                                                                      , HH.article [ bulmaClass [ BC.unsafeClassName "media" ] ] 
-                                                                                   [ HH.div [ bulmaClass [ BC.unsafeClassName "media-content" ] ]
-                                                                                            [ HH.div [ bulmaClass [ BC.unsafeClassName "content" ] ] 
+                                                                      , HH.article [ bulmaClass [ BL.media ] ] 
+                                                                                   [ HH.div [ bulmaClass [ BL.mediaContent ] ]
+                                                                                            [ HH.div [ bulmaClass [ BE.content ] ] 
                                                                                                      [ HH.p_ [ HE.strong_ [ HH.text "JavaScript" ]
                                                                                                              , HH.br_
                                                                                                              , HE.progress [ bulmaClass [ BC.unsafeClassName "progress"
@@ -381,8 +391,80 @@ renderProfile _ =
                                                     ] -- card
                                            ] -- column
                                   ] -- columns
-                         ] -- section
-            ] -- section-heading
+                         ] -- section id=about
+            , HH.section [ bulmaClass [ BL.section ] 
+                         , HP.id_ "service" 
+                         ] 
+                         [ HH.div [ bulmaClass [ BC.unsafeClassName "section-heading" ] ] 
+                                  [ HH.h3 [ bulmaClass [ BTT.title  
+                                                       , BC.unsafeClassName "is-2" 
+                                                       ] 
+                                          ]  
+                                          [ HH.text "Serivce" ]
+                                  , HH.h4 [ bulmaClass [ BTT.subtitle 
+                                                       , BC.unsafeClassName "is-5"
+                                                       ] 
+                                          ]
+                                          [ HH.text "What can I do for you?" ]
+                                  ] -- section-heading
+                         , HH.div [ bulmaClass [ BL.container ] ]
+                                  [ HH.div [ bulmaClass [ BCL.columns ] ] 
+                                           [ HH.div [ bulmaClass [ BCL.column ] ] 
+                                                    [ HH.div [ bulmaClass [ BE.box ] ] 
+                                                             [ HH.div [ bulmaClass [ BE.content ] ]
+                                                                      [ HH.h4 [ bulmaClass [ BTT.title
+                                                                                           , BC.unsafeClassName "is-5"
+                                                                                           ] 
+                                                                              ] 
+                                                                              [ HH.text "Front End Web Developer" ]
+                                                                      , HH.text "Develop Front End using latest standards with HTML5/CSS3 with added funtionality using JavaScript and Vue.js." 
+                                                                      ]
+                                                             ]
+                                                    ]
+
+                                           , HH.div [ bulmaClass [ BCL.column ] ] 
+                                                    [ HH.div [ bulmaClass [ BE.box ] ] 
+                                                             [ HH.div [ bulmaClass [ BE.content ] ]
+                                                                      [ HH.h4 [ bulmaClass [ BTT.title
+                                                                                           , BC.unsafeClassName "is-5"
+                                                                                           ] 
+                                                                              ] 
+                                                                              [ HH.text "Front End Web Developer" ]
+                                                                      , HH.text "Develop Front End using latest standards with HTML5/CSS3 with added funtionality using JavaScript and Vue.js." 
+                                                                      ]
+                                                             ]
+                                                    ]
+                                           ]
+                                  , HH.div [ bulmaClass [ BCL.columns ] ] 
+                                           [ HH.div [ bulmaClass [ BCL.column ] ] 
+                                                    [ HH.div [ bulmaClass [ BE.box ] ] 
+                                                             [ HH.div [ bulmaClass [ BE.content ] ]
+                                                                      [ HH.h4 [ bulmaClass [ BTT.title
+                                                                                           , BC.unsafeClassName "is-5"
+                                                                                           ] 
+                                                                              ] 
+                                                                              [ HH.text "Front End Web Developer" ]
+                                                                      , HH.text "Develop Front End using latest standards with HTML5/CSS3 with added funtionality using JavaScript and Vue.js." 
+                                                                      ]
+                                                             ]
+                                                    ]
+
+                                           , HH.div [ bulmaClass [ BCL.column ] ] 
+                                                    [ HH.div [ bulmaClass [ BE.box ] ] 
+                                                             [ HH.div [ bulmaClass [ BE.content ] ]
+                                                                      [ HH.h4 [ bulmaClass [ BTT.title
+                                                                                           , BC.unsafeClassName "is-5"
+                                                                                           ] 
+                                                                              ] 
+                                                                              [ HH.text "Front End Web Developer" ]
+                                                                      , HH.text "Develop Front End using latest standards with HTML5/CSS3 with added funtionality using JavaScript and Vue.js." 
+                                                                      ]
+                                                             ]
+                                                    ]
+                                           ]
+                                  ]
+                         ]
+            ] -- div_
                                         
 
 
